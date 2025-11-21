@@ -1,13 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-
+import { Route, Routes } from 'react-router'
+import PersonajesContainer from './containers/PersonajesContainer'
+import UbicacionesContainer from './containers/UbicacionesContainer'
+import { Menubar } from 'primereact/menubar';
 function App() {
-  const [count, setCount] = useState(0)
-
+  const items = [{
+    label: "Personajes",
+    url: "/"
+  }, {
+    label: "Ubicaciones",
+    url: "/ubicaciones"
+  }]
   return (
     <>
-      
+      <div>
+        <Menubar model={items}></Menubar>
+      </div>
+      <div className='mt-4'>
+        <Routes>
+          <Route path='/' element={<PersonajesContainer />}></Route>
+          <Route path='/ubicaciones' element={<UbicacionesContainer />}></Route>
+        </Routes>
+      </div>
     </>
   )
 }
